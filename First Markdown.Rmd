@@ -1,0 +1,83 @@
+---
+title: "williamdavis"
+author: "William Davis"
+date: "4/10/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Create a dataframe of your bag including the following
+  - Name of each club
+  - Average distance for each shot
+
+
+```{r Create Bag}
+club <- c("driver", "3 wood", "5 wood", "4 iron", "5 iron", "6 iron", "7 iron", "8 iron",
+          "9 iron", "P Wedge", "50 Degree", "54 Degree", "58 Degree")
+distance <- c(260, 220, 200, 185, 175, 165, 150, 135, 125, 115, 100, 85, 70)
+
+bag <-create.bag(club, distance)
+
+```
+
+## Create a handicap
+  - The handicap system gives players a measurment for how well they should be scoring
+  - The system is on a rating of 0-36 with better players having lower numbers
+    - Going below 0 is possible but is only for extremly talented golfers
+    - This number would then be considered to be a +(Handicap)
+  - Your handicap is the rating at which youve played the last 10 Games
+ 
+
+```{r Generate Handicap}
+scores <- c(10, 12, 8, 9, 9, 10, 8, 9, 8, 9)
+
+handicap <- set.handicap(scores)
+
+
+```
+
+## Course handicap and target score
+  - Each course is given a rating and a slope to the par for the course
+  - Rating is how well a scractch golfer should play
+    - Scratch is 0 handicap
+    - Easier courses have a lower rating and a harder courses have a higher rating
+  - Slope is how well a bogey gofler should should play
+    - This is a rating for how condtions may affect higher handicap players
+    - A bogey golfer is someone who is averaging around one stroke over par per hole
+    - Same characteristics of difficulty for Rating apply to Slope
+  - A course handicap takes into account the difficulty of the course and your handicap
+  - The course handicap plus par is the target score for the round
+    
+
+
+```{r Generate Course Handicap}
+#For this example, the we know the handicap index, slope rating, course rating and par.
+# these are randomly generated but are realistic numbers
+
+course <- course.handicap(handicap, 120, 73.2, 72)
+
+target <- set.targetscore(72, course)
+
+```
+
+## Club to hit and target
+  - There are many factors that go into hitting each type of shot (Wind, shot shape, hazards)
+  - Ideally the golfer should know distance to hazards are 
+  - They should also know what shot shape they are going to hit
+    - Experienced golfers can choose their shot shape with practice
+      - Fade: starts straight and funnels right towards end
+      - Draw: starts stright and funnels left at end
+    - Most amateur golfer will hit one type of shot shape without intention
+  - Wind coupled with trajectory will affect how far the ball will travel both in distance and laterally 
+
+
+
+```{r}
+
+shot(bag, 135)
+
+```
+

@@ -1,0 +1,13 @@
+Package: davisw3
+Type: Package
+Title: gives Golf advice and statistic analysis(Title Case)
+Version: 0.0.0.9000
+Author: William Davis
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Takes in parameters for certain golf shots, scores distances in order to produce a 
+   effective analysis of ones golf game. 
+Depends: R (>= 3.1.2)
+License: CC0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
